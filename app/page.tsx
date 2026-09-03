@@ -3,6 +3,7 @@ import { LandingHero } from "@/components/landing/hero"
 import { HowItWorks } from "@/components/landing/how-it-works"
 import { Workspace } from "@/components/landing/workspace"
 import { Privacy } from "@/components/landing/privacy"
+import { Stats } from "@/components/landing/stats"
 
 export default function Page() {
   return (
@@ -12,6 +13,7 @@ export default function Page() {
       <HowItWorks />
       <Workspace />
       <Privacy />
+      <Stats />
     </main>
   )
 }
