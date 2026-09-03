@@ -40,9 +40,9 @@ function DocumentPreview() {
           3 docs indexed
         </Badge>
       </div>
-      <div className="grid min-h-[350px] grid-cols-[1.1fr_0.9fr]">
+      <div className="grid min-h-87.5 grid-cols-[1.1fr_0.9fr]">
         <div className="flex flex-col border-r p-5">
-          <div className="ml-auto max-w-[230px] rounded-xl border bg-muted px-4 py-3 text-sm leading-5">
+          <div className="ml-auto max-w-57.5 rounded-xl border bg-muted px-4 py-3 text-sm leading-5">
             What&apos;s the termination notice period?
           </div>
           <div className="mt-4 flex items-center gap-2 text-[10px] font-semibold tracking-[0.14em] text-muted-foreground">
