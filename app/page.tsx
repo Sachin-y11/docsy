@@ -5,6 +5,7 @@ import { Workspace } from "@/components/landing/workspace"
 import { Testimonials } from "@/components/landing/testimonials"
 import { Privacy } from "@/components/landing/privacy"
 import { Stats } from "@/components/landing/stats"
+import { Pricing } from "@/components/landing/pricing"
 
 export default function Page() {
   return (
@@ -13,9 +14,10 @@ export default function Page() {
       <LandingHero />
       <HowItWorks />
       <Workspace />
-      <Testimonials />
       <Privacy />
       <Stats />
+      <Testimonials />
+      <Pricing />
     </main>
   )
 }
