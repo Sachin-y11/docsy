@@ -7,6 +7,8 @@ import { Privacy } from "@/components/landing/privacy"
 import { Stats } from "@/components/landing/stats"
 import { Pricing } from "@/components/landing/pricing"
 import { Faqs } from "@/components/landing/faqs"
+import { FooterCta } from "@/components/landing/footer-cta"
+import { Footer } from "@/components/landing/footer"
 
 export default function Page() {
   return (
@@ -20,6 +22,8 @@ export default function Page() {
       <Testimonials />
       <Pricing />
       <Faqs />
+      <FooterCta />
+      <Footer />
     </main>
   )
 }
