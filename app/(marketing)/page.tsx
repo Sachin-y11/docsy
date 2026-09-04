@@ -9,21 +9,24 @@ import { Pricing } from "@/components/landing/pricing"
 import { Faqs } from "@/components/landing/faqs"
 import { FooterCta } from "@/components/landing/footer-cta"
 import { Footer } from "@/components/landing/footer"
+import { AuthModalProvider } from "@/components/auth/auth-modal-provider"
 
 export default function Page() {
   return (
-    <main className="min-h-svh bg-background">
-      <LandingHeader />
-      <LandingHero />
-      <HowItWorks />
-      <Workspace />
-      <Privacy />
-      <Stats />
-      <Testimonials />
-      <Pricing />
-      <Faqs />
-      <FooterCta />
-      <Footer />
-    </main>
+    <AuthModalProvider>
+      <main className="min-h-svh bg-background">
+        <LandingHeader />
+        <LandingHero />
+        <HowItWorks />
+        <Workspace />
+        <Privacy />
+        <Stats />
+        <Testimonials />
+        <Pricing />
+        <Faqs />
+        <FooterCta />
+        <Footer />
+      </main>
+    </AuthModalProvider>
   )
 }

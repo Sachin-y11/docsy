@@ -1,9 +1,14 @@
+"use client"
+
 import Link from "next/link"
 import { ArrowRight, Search } from "lucide-react"
 
+import { useAuthModal } from "@/components/auth/auth-modal-provider"
 import { Button } from "@/components/ui/button"
 
 export function FooterCta() {
+  const { openSignUp } = useAuthModal()
+
   return (
     <section
       id="get-started"
@@ -27,8 +32,7 @@ export function FooterCta() {
           <Button
             size="lg"
             className="h-12 rounded-xl bg-amber-500 px-6 text-base text-amber-950 hover:bg-amber-400"
-            render={<Link href="#sign-up" />}
-            nativeButton={false}
+            onClick={openSignUp}
           >
             Try Docsy free
             <ArrowRight data-icon="inline-end" />

@@ -2,9 +2,11 @@
 
 import Link from "next/link"
 import { Menu, Moon, Search, Sun } from "lucide-react"
+import { useEffect, useState } from "react"
 import { useTheme } from "next-themes"
 
 import { Button } from "@/components/ui/button"
+import { useAuthModal } from "@/components/auth/auth-modal-provider"
 import {
   Sheet,
   SheetClose,
@@ -36,7 +38,13 @@ function navigationHref(item: string) {
 
 export function LandingHeader() {
   const { resolvedTheme, setTheme } = useTheme()
+  const { openSignIn, openSignUp } = useAuthModal()
+  const [mounted, setMounted] = useState(false)
   const isDark = resolvedTheme === "dark"
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/80">
@@ -83,11 +91,23 @@ export function LandingHeader() {
             variant="outline"
             size="icon-sm"
             aria-label={
-              isDark ? "Switch to light theme" : "Switch to dark theme"
+              mounted
+                ? isDark
+                  ? "Switch to light theme"
+                  : "Switch to dark theme"
+                : "Toggle color theme"
             }
             onClick={() => setTheme(isDark ? "light" : "dark")}
           >
-            {isDark ? <Sun /> : <Moon />}
+            {mounted ? (
+              isDark ? (
+                <Sun />
+              ) : (
+                <Moon />
+              )
+            ) : (
+              <span aria-hidden="true" className="size-4" />
+            )}
           </Button>
           <Sheet>
             <SheetTrigger
@@ -101,7 +121,10 @@ export function LandingHeader() {
               <SheetHeader>
                 <SheetTitle>Navigation</SheetTitle>
               </SheetHeader>
-              <nav aria-label="Mobile navigation" className="flex flex-col gap-1 px-4">
+              <nav
+                aria-label="Mobile navigation"
+                className="flex flex-col gap-1 px-4"
+              >
                 {navigation.map((item) => (
                   <SheetClose
                     key={item}
@@ -113,15 +136,15 @@ export function LandingHeader() {
                   </SheetClose>
                 ))}
                 <SheetClose
-                  render={<Link href="#sign-in" />}
                   nativeButton={false}
+                  onClick={openSignIn}
                   className="rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-muted"
                 >
                   Sign in
                 </SheetClose>
                 <SheetClose
-                  render={<Link href="#get-started" />}
                   nativeButton={false}
+                  onClick={openSignUp}
                   className="rounded-md bg-primary px-3 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/80"
                 >
                   Try Docsy free
@@ -132,16 +155,11 @@ export function LandingHeader() {
           <Button
             variant="ghost"
             className="hidden sm:inline-flex"
-            render={<Link href="#sign-in">Sign in</Link>}
-            nativeButton={false}
+            onClick={openSignIn}
           >
             Sign in
           </Button>
-          <Button
-            className="px-4"
-            render={<Link href="#get-started">Try Docsy free</Link>}
-            nativeButton={false}
-          >
+          <Button className="px-4" onClick={openSignUp}>
             Try Docsy free
           </Button>
         </div>
