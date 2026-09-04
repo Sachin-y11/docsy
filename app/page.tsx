@@ -6,6 +6,7 @@ import { Testimonials } from "@/components/landing/testimonials"
 import { Privacy } from "@/components/landing/privacy"
 import { Stats } from "@/components/landing/stats"
 import { Pricing } from "@/components/landing/pricing"
+import { Faqs } from "@/components/landing/faqs"
 
 export default function Page() {
   return (
@@ -18,6 +19,7 @@ export default function Page() {
       <Stats />
       <Testimonials />
       <Pricing />
+      <Faqs />
     </main>
   )
 }
